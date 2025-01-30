@@ -22,8 +22,6 @@ public class PlayerMovement : MonoBehaviour
         Vector2 inputVector = moveAction.ReadValue<Vector2>();
         Vector3 moveForce = new Vector3(inputVector.x, 0f, inputVector.y);
         rb.AddForce(moveForce * moveSpeed);
-
-        print(rb.linearVelocity);
     }
 
 }
