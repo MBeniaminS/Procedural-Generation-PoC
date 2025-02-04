@@ -1243,7 +1243,8 @@ GameObject:
   - component: {fileID: 1929334103}
   - component: {fileID: 1929334102}
   - component: {fileID: 1929334101}
-  - component: {fileID: 1929334100}
+  - component: {fileID: 1929334105}
+  - component: {fileID: 1929334104}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1343,18 +1344,6 @@ Transform:
   - {fileID: 1510550632}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1929334100
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1929334095}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b399de36629610049811b01cbd2ead8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1929334101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1410,6 +1399,31 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 1
+--- !u!114 &1929334104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929334095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 263f7388c6eadc844b68bf0bbf948397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1929334105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929334095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b399de36629610049811b01cbd2ead8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 0}
 --- !u!1 &2135500775
 GameObject:
   m_ObjectHideFlags: 0
