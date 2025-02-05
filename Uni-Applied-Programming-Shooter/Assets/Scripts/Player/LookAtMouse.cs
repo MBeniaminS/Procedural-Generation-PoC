@@ -4,7 +4,7 @@ using UnityEngine.Animations;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 
-public class PlayerLook : MonoBehaviour
+public class LookAtMouse : MonoBehaviour
 {
 
     [SerializeField] private LayerMask groundMask;
