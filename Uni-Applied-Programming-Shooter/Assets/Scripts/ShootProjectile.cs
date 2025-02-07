@@ -13,4 +13,17 @@ public class ShootProjectile : MonoBehaviour
     {
         
     }
+
+    void FireProjectile(GameObject mProjectile, Transform mStartPoint, Vector3 mDirection, float mFireForce)
+    {
+        if (mProjectile.GetComponent<Rigidbody>() == null)
+        {
+            Debug.LogError("Projectile fired does not contain a Rigidbody.");
+            return;
+        }
+
+        GameObject firedProjectile = Instantiate(mProjectile);
+
+
+    }
 }

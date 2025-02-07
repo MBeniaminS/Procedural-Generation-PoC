@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.InputSystem;
@@ -11,6 +12,7 @@ public class LookAtMouse : MonoBehaviour
 
     private Camera mainCam;
 
+    // #region is a good way of categorising bits of code, just don't do it too much or else you nullify its effectiveness
     #region Methods
 
     #region Unity Callbacks
@@ -26,7 +28,6 @@ public class LookAtMouse : MonoBehaviour
     void FixedUpdate()
     {
         Aim();
-
     }
 
     #endregion Unity Callbacks
@@ -36,6 +37,8 @@ public class LookAtMouse : MonoBehaviour
         var (success, position) = GetMousePos();
         if (success)
         {
+            // Draws a line ONLY IN THE SCENE OF THE UNITY EDITOR, NOT IN GAME
+            Debug.DrawLine(position, new Vector3(position.x, 1, position.z));
             var direction = position - transform.position;
 
             direction.y = 0;
@@ -44,6 +47,8 @@ public class LookAtMouse : MonoBehaviour
         }
     }
 
+    // A method that outputs both a success variable and a position output. It OUTPUTS these variables while not requiring any input,
+    // keeping it a void method.
     private (bool success, Vector3 position) GetMousePos()
     {
         Ray cameraRay = mainCam.ScreenPointToRay(Mouse.current.position.ReadValue());
