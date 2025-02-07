@@ -1423,7 +1423,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b399de36629610049811b01cbd2ead8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 0}
+  projectilePrefab: {fileID: 5363248068832645616, guid: 9daaea492040e9d4491d5ccba67580b1, type: 3}
+  forwardPoint: {fileID: 1510550632}
+  fireForce: 500
 --- !u!1 &2135500775
 GameObject:
   m_ObjectHideFlags: 0

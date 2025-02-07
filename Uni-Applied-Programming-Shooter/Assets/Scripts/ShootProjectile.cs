@@ -2,20 +2,10 @@ using UnityEngine;
 
 public class ShootProjectile : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    public void FireProjectile(GameObject mProjectile, Vector3 startPoint, Vector3 direction, float mFireForce)
     {
-        
-    }
-
-    void FireProjectile(GameObject mProjectile, Transform mStartPoint, Vector3 mDirection, float mFireForce)
-    {
+        // Checks for rigidbody of the projectile prefab given, without it the code won't work
         if (mProjectile.GetComponent<Rigidbody>() == null)
         {
             Debug.LogError("Projectile fired does not contain a Rigidbody.");
@@ -23,7 +13,13 @@ public class ShootProjectile : MonoBehaviour
         }
 
         GameObject firedProjectile = Instantiate(mProjectile);
+        Rigidbody rb = firedProjectile.GetComponent<Rigidbody>();
+        Transform projectileTrans = firedProjectile.transform;
 
+        projectileTrans.position = startPoint;
+        projectileTrans.forward = direction;
+
+        rb.AddForce(direction * mFireForce);
 
     }
 }
