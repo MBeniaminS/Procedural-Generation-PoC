@@ -3,22 +3,16 @@ using UnityEngine;
 
 public class DestroyAfterSeconds : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
+    [SerializeField] private float seconds;
 
+    private void Start()
+    {
+        StartCoroutine(DestroyAfterXSeconds(seconds));
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    // FIX THIS
     IEnumerator DestroyAfterXSeconds(float seconds)
     {
-        yield return WaitForSeconds(seconds);
+        yield return new WaitForSeconds(seconds);
         Destroy(gameObject);
         yield return null;
     }

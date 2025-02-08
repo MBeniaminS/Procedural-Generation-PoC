@@ -13,6 +13,7 @@ public class ShootProjectile : MonoBehaviour
         }
 
         GameObject firedProjectile = Instantiate(mProjectile);
+        firedProjectile.transform.parent = GameObject.FindWithTag("ProjectileList").transform;
         Rigidbody rb = firedProjectile.GetComponent<Rigidbody>();
         Transform projectileTrans = firedProjectile.transform;
 
