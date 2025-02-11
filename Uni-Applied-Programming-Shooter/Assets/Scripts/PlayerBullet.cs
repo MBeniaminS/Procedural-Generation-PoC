@@ -41,7 +41,7 @@ public class PlayerBullet : MonoBehaviour
                 m_hitPrefab = environHitPrefab;
                 break;
         }
-        SpawnPrefabAtPoint.instance.SpawnPrefab(m_hitPrefab, transform.position, null);
+        SpawnPrefabAtPoint.instance.SpawnPrefab(m_hitPrefab, transform.position, SpawnPrefabAtPoint.instance.transform);
         Destroy(gameObject);
     }
 }
