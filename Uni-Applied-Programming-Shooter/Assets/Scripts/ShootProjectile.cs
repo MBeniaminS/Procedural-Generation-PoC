@@ -3,7 +3,7 @@ using UnityEngine;
 public class ShootProjectile : MonoBehaviour
 {
 
-    public void FireProjectile(GameObject mProjectile, Vector3 startPoint, Vector3 direction, float mFireForce)
+    public void FireProjectile(GameObject mProjectile, Vector3 startPoint, Vector3 direction, float m_FireForce)
     {
         // Checks for rigidbody of the projectile prefab given, without it the code won't work
         if (mProjectile.GetComponent<Rigidbody>() == null)
@@ -20,7 +20,7 @@ public class ShootProjectile : MonoBehaviour
         projectileTrans.position = startPoint;
         projectileTrans.forward = direction;
 
-        rb.AddForce(direction * mFireForce);
+        rb.AddForce(direction * m_FireForce);
 
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,6 +7,7 @@ public class PlayerShoot : MonoBehaviour
 {
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform forwardPoint;
+    public float fireCooldownTime;
 
     ShootProjectile shootScript;
 
@@ -30,10 +32,14 @@ public class PlayerShoot : MonoBehaviour
             // fire
             shootScript.FireProjectile(projectilePrefab, forwardPoint.position, forwardPoint.forward, fireForce);
             hasFired = true;
+            StartCoroutine(fireCooldown(fireCooldownTime));
         }
-        if (fireAction.WasReleasedThisFrame())
-        {
-            hasFired = false;
-        }
+    }
+
+    IEnumerator fireCooldown(float cooldown)
+    {
+        yield return new WaitForSeconds(cooldown);
+        hasFired = false;
+        yield return null;
     }
 }

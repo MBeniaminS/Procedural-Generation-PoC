@@ -1,9 +1,5 @@
-using NUnit.Framework;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Animations;
 using UnityEngine.InputSystem;
-using UnityEngine.Rendering;
 
 public class LookAtMouse : MonoBehaviour
 {
@@ -17,11 +13,9 @@ public class LookAtMouse : MonoBehaviour
 
     #region Unity Callbacks
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         mainCam = Camera.main;
-
     }
 
     // Update is called once per frame
@@ -32,6 +26,7 @@ public class LookAtMouse : MonoBehaviour
 
     #endregion Unity Callbacks
 
+    // Changes objects transform.forward towards mouse position on the ground
     private void Aim()
     {
         var (success, position) = GetMousePos();
@@ -59,7 +54,7 @@ public class LookAtMouse : MonoBehaviour
         }
         else
         {
-            return (success:  false, position: Vector3.zero);
+            return (success: false, position: Vector3.zero);
         }
     }
 

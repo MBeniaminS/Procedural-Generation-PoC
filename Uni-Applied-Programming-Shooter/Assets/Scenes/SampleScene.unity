@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 97783931}
   - component: {fileID: 97783930}
   - component: {fileID: 97783929}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Left Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -392,7 +392,8 @@ GameObject:
   - component: {fileID: 344490465}
   - component: {fileID: 344490464}
   - component: {fileID: 344490463}
-  m_Layer: 0
+  - component: {fileID: 344490467}
+  m_Layer: 8
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -489,6 +490,22 @@ Transform:
   - {fileID: 1900504265}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &344490467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344490461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d1b6bbd8f91a1c418eff98aa6db2a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 100
+  m_currentHealth: 0
+  damagePrefab: {fileID: 3235338943447857330, guid: e0edd2cbf6eb09f4297612cf9149933f, type: 3}
+  destroyPrefab: {fileID: 4148064274526551540, guid: da4546fde6dbb504d993a079a7d585d7, type: 3}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -635,7 +652,51 @@ Transform:
   m_GameObject: {fileID: 421696704}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.921392, y: 10.960445, z: 4.994359}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &465444635
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 465444637}
+  - component: {fileID: 465444636}
+  m_Layer: 0
+  m_Name: PrefabFactory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &465444636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465444635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71e77ab62b61e2f43a6f63b7260177fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &465444637
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465444635}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -739,7 +800,7 @@ GameObject:
   - component: {fileID: 878141159}
   - component: {fileID: 878141158}
   - component: {fileID: 878141157}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Right Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -846,7 +907,7 @@ GameObject:
   - component: {fileID: 1510550632}
   - component: {fileID: 1510550635}
   - component: {fileID: 1510550634}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ForwardPointer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -933,7 +994,7 @@ GameObject:
   - component: {fileID: 1859098579}
   - component: {fileID: 1859098578}
   - component: {fileID: 1859098577}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Top Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1041,8 +1102,8 @@ GameObject:
   - component: {fileID: 1900504268}
   - component: {fileID: 1900504267}
   - component: {fileID: 1900504266}
-  m_Layer: 0
-  m_Name: Cube
+  m_Layer: 8
+  m_Name: ForwardPointer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1149,7 +1210,7 @@ GameObject:
   - component: {fileID: 1902632818}
   - component: {fileID: 1902632817}
   - component: {fileID: 1902632816}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bottom Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1258,11 +1319,12 @@ GameObject:
   - component: {fileID: 1929334097}
   - component: {fileID: 1929334096}
   - component: {fileID: 1929334103}
+  - component: {fileID: 1929334106}
   - component: {fileID: 1929334102}
   - component: {fileID: 1929334101}
   - component: {fileID: 1929334105}
   - component: {fileID: 1929334104}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1388,7 +1450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aabeb071bb6b0645a3ee1ae12dc9c94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2.5
+  moveSpeed: 2
 --- !u!54 &1929334103
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1442,7 +1504,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 5363248068832645616, guid: 9daaea492040e9d4491d5ccba67580b1, type: 3}
   forwardPoint: {fileID: 1510550632}
-  fireForce: 500
+  fireCooldownTime: 0.75
+  fireForce: 750
+--- !u!114 &1929334106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929334095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26d0db64f296bd544aa96b291cb2909a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 100
+  m_currentHealth: 0
+  damagePrefab: {fileID: 0}
+  destroyPrefab: {fileID: 0}
 --- !u!1 &2135500775
 GameObject:
   m_ObjectHideFlags: 0
@@ -1558,7 +1637,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 330585546}
   - {fileID: 832575519}
+  - {fileID: 421696705}
+  - {fileID: 465444637}
   - {fileID: 640098827}
   - {fileID: 1929334099}
   - {fileID: 344490466}
-  - {fileID: 421696705}
