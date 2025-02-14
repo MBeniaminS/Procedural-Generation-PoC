@@ -1,3 +1,4 @@
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        rb.maxAngularVelocity = 0f;
 
         moveAction = InputSystem.actions.FindAction("Move");
     }

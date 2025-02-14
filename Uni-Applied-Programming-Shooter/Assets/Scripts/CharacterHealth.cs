@@ -18,7 +18,6 @@ public class CharacterHealth : MonoBehaviour
         jumpAction = InputSystem.actions.FindAction("Jump");
 
         m_currentHealth = startingHealth;
-        print("Start method started, current health is: " +  m_currentHealth);
     }
 
     // Update is called once per frame
