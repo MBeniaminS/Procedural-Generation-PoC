@@ -58,4 +58,9 @@ public class GridTesting : MonoBehaviour
             return Vector3.zero;
         }
     }
+
+    private void GenerateDoors(int amount)
+    {
+        
+    }
 }
