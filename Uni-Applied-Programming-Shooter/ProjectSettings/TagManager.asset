@@ -7,9 +7,6 @@ TagManager:
   - ProjectileList
   - Door
   - North
-  - East
-  - South
-  - West
   layers:
   - Default
   - TransparentFX

@@ -1,7 +1,12 @@
 using UnityEngine;
 
-public class Room : MonoBehaviour
+public class WallDoorParent : MonoBehaviour
 {
+
+    public GridTesting.cardinalDirections wallDirection;
+    public GameObject wall;
+    public GameObject doorFrame;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

@@ -1,6 +1,8 @@
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 public class GridTesting : MonoBehaviour
 {
@@ -8,20 +10,33 @@ public class GridTesting : MonoBehaviour
     public float fireCooldownTime;
 
     public GameObject testPrefab;
+    RoomCell roomCellScript;
+
     Grid grid;
     Camera mainCam;
 
     InputAction fireAction;
     bool hasFired;
 
+    public enum cardinalDirections
+    {
+        North,
+        East,
+        South,
+        West
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        roomCellScript = testPrefab.GetComponent<RoomCell>();
+
         grid = GetComponent<Grid>();
         mainCam = Camera.main;
 
         fireAction = InputSystem.actions.FindAction("Fire");
+
+        GenerateDoors(testPrefab, 1);
     }
 
     // Update is called once per frame
@@ -59,8 +74,66 @@ public class GridTesting : MonoBehaviour
         }
     }
 
-    private void GenerateDoors(int amount)
+    private void GenerateDoors(GameObject cell, int amount)
     {
-        
+        if (amount > 4)
+        {
+            Debug.LogError("Can't generate doors. Amount of doors to generate exceeds max amount allowed.");
+            return;
+        }
+        int[] generatedDoorDirections = new int[amount];
+
+
+        for (int i = 0; i < amount; i++)
+        {
+            int doorDirection = GetRandomDoorDirection();
+
+            while (generatedDoorDirections.Contains(doorDirection))
+            {
+                print("Door Direction (" + doorDirection + ") already generated, regenerating...");
+                doorDirection = GetRandomDoorDirection();
+            }
+
+            generatedDoorDirections[i] = doorDirection;
+
+            switch (doorDirection)
+            {
+                // North Direction
+                case 1:
+                    Debug.LogError("NORTH DOOR GENERATED");
+                    roomCellScript.TurnWallIntoDoorFrame(cardinalDirections.North);
+                    break;
+
+                // East Direction
+                case 2:
+                    Debug.LogError("EAST DOOR GENERATED");
+                    roomCellScript.TurnWallIntoDoorFrame(cardinalDirections.East);
+                    break;
+
+                // South Direction
+                case 3:
+                    Debug.LogError("SOUTH DOOR GENERATED");
+                    roomCellScript.TurnWallIntoDoorFrame(cardinalDirections.South);
+                    break;
+
+                // West Direction
+                case 4:
+                    Debug.LogError("WEST DOOR GENERATED");
+                    roomCellScript.TurnWallIntoDoorFrame(cardinalDirections.West);
+                    break;
+
+                default:
+                    Debug.LogError("Door direction number generated not between 1 and 4...");
+                    break;
+            }
+        }
     }
+
+    private int GetRandomDoorDirection() 
+    {
+        return Random.Range(1, 5);
+    }
+
+
+
 }
