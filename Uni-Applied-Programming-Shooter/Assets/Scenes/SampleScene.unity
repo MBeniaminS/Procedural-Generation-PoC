@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 4186486}
   - component: {fileID: 4186485}
   - component: {fileID: 4186487}
+  - component: {fileID: 4186488}
   m_Layer: 0
   m_Name: MapGenManager
   m_TagString: Untagged
@@ -179,8 +180,20 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 128
-  fireCooldownTime: 1
+  numDoorsToCreate: 1
   testPrefab: {fileID: 6103227866120356276}
+--- !u!114 &4186488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4186484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a029f01e78833aa4fb3c1d5d11077c4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &266218254
 GameObject:
   m_ObjectHideFlags: 0
@@ -456,6 +469,7 @@ GameObject:
   - component: {fileID: 344490464}
   - component: {fileID: 344490463}
   - component: {fileID: 344490467}
+  - component: {fileID: 344490469}
   - component: {fileID: 344490468}
   m_Layer: 8
   m_Name: Enemy
@@ -598,6 +612,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!114 &344490469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344490461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b73e9f076b355214f9c455339fba23ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0

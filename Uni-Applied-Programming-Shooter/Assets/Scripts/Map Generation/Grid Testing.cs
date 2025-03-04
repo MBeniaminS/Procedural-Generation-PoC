@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -7,16 +8,17 @@ using UnityEngine.Rendering;
 public class GridTesting : MonoBehaviour
 {
     [SerializeField] private LayerMask groundMask;
-    public float fireCooldownTime;
+
+
+    [Range(1, 4)]
+    public int numDoorsToCreate;
 
     public GameObject testPrefab;
-    RoomCell roomCellScript;
 
     Grid grid;
     Camera mainCam;
 
     InputAction fireAction;
-    bool hasFired;
 
     public enum cardinalDirections
     {
@@ -29,34 +31,30 @@ public class GridTesting : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        roomCellScript = testPrefab.GetComponent<RoomCell>();
-
         grid = GetComponent<Grid>();
         mainCam = Camera.main;
 
+
+
         fireAction = InputSystem.actions.FindAction("Fire");
 
-        GenerateDoors(testPrefab, 1);
+        GenerateDoors(testPrefab, numDoorsToCreate);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (fireAction.IsPressed() == true && hasFired == false)
+        if (fireAction.WasPerformedThisFrame())
         {
-            Vector3Int cellPos = grid.WorldToCell(GetMousePos());
-            SpawnPrefabAtPoint.instance.SpawnPrefab(testPrefab, grid.GetCellCenterWorld(cellPos), null);
-            //print("Cell Position: " + cellPos);
-            hasFired = true;
-            StartCoroutine(fireCooldown(fireCooldownTime));
+            CreateNewCell(GetMousePos());
         }
     }
 
-    IEnumerator fireCooldown(float cooldown)
+    void CreateNewCell(Vector3 location)
     {
-        yield return new WaitForSeconds(cooldown);
-        hasFired = false;
-        yield return null;
+        Vector3Int cellPos = grid.WorldToCell(GetMousePos());
+        SpawnPrefabAtPoint.instance.SpawnPrefab(testPrefab, grid.GetCellCenterWorld(cellPos), null);
+        print("Cell Position: " + cellPos);
     }
 
     private Vector3 GetMousePos()
@@ -82,6 +80,8 @@ public class GridTesting : MonoBehaviour
             return;
         }
         int[] generatedDoorDirections = new int[amount];
+
+        RoomCell roomCellScript = cell.GetComponent<RoomCell>();
 
 
         for (int i = 0; i < amount; i++)

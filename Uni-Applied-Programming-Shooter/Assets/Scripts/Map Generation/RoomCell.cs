@@ -7,7 +7,6 @@ public class RoomCell : MonoBehaviour
     void Start()
     {
         wallDoorParentsArray = GetComponentsInChildren<WallDoorParent>();
-        print(wallDoorParentsArray.Length);
     }
 
     public void TurnWallIntoDoorFrame(GridTesting.cardinalDirections direction)
