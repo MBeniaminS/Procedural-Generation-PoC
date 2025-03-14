@@ -9,6 +9,10 @@ public class GridTesting : MonoBehaviour
 {
     [SerializeField] private LayerMask groundMask;
 
+    public GameObject[,] cellArray;
+    [SerializeField] int maxMapXSize;
+    [SerializeField] int maxMapYSize;
+
 
     [Range(1, 4)]
     public int numDoorsToCreate;
@@ -34,6 +38,12 @@ public class GridTesting : MonoBehaviour
         grid = GetComponent<Grid>();
         mainCam = Camera.main;
 
+        cellArray = new GameObject[maxMapXSize, maxMapYSize];
+
+        Vector3Int centerCell = new Vector3Int(Mathf.FloorToInt(maxMapXSize / 2), Mathf.FloorToInt(maxMapYSize / 2));
+        print(centerCell);
+
+        CreateNewCell(centerCell);
 
 
         fireAction = InputSystem.actions.FindAction("Fire");
@@ -44,17 +54,19 @@ public class GridTesting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (fireAction.WasPerformedThisFrame())
-        {
-            CreateNewCell(GetMousePos());
-        }
+        //if (fireAction.WasPerformedThisFrame())
+        //{
+        //    CreateNewCell(grid.WorldToCell(GetMousePos()));
+        //}
     }
 
-    void CreateNewCell(Vector3 location)
+    void CreateNewCell(Vector3Int location)
     {
-        Vector3Int cellPos = grid.WorldToCell(GetMousePos());
-        SpawnPrefabAtPoint.instance.SpawnPrefab(testPrefab, grid.GetCellCenterWorld(cellPos), null);
-        print("Cell Position: " + cellPos);
+        Vector3Int cellPos = location;
+        //SpawnPrefabAtPoint.instance.SpawnPrefab(testPrefab, grid.GetCellCenterWorld(cellPos), null);
+        GameObject newCell = Instantiate(testPrefab);
+        newCell.transform.position = grid.GetCellCenterWorld(cellPos);
+
     }
 
     private Vector3 GetMousePos()

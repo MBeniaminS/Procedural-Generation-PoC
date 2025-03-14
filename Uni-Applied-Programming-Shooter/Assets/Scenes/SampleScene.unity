@@ -180,8 +180,10 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 128
+  maxMapXSize: 10
+  maxMapYSize: 10
   numDoorsToCreate: 1
-  testPrefab: {fileID: 6103227866120356276}
+  testPrefab: {fileID: 8426994971887400223, guid: 28f35a946a014bc42bd997a516b0f2b5, type: 3}
 --- !u!114 &4186488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1584,6 +1586,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Arena
       objectReference: {fileID: 0}
+    - target: {fileID: 8426994971887400223, guid: e8ceb673d18169e4596ae09b3d4a4d60, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8670471702816417771, guid: e8ceb673d18169e4596ae09b3d4a4d60, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -2110,11 +2116,6 @@ MonoBehaviour:
   m_currentHealth: 0
   damagePrefab: {fileID: 0}
   destroyPrefab: {fileID: 0}
---- !u!1 &6103227866120356276 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8426994971887400223, guid: e8ceb673d18169e4596ae09b3d4a4d60, type: 3}
-  m_PrefabInstance: {fileID: 754186254}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

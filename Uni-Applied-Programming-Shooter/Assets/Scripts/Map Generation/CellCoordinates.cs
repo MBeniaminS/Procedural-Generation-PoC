@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CellCoordinatesSystem : MonoBehaviour
+public class CellCoordinates : MonoBehaviour
 {
-    public static CellCoordinatesSystem instance;
+    public static CellCoordinates instance;
 
     Dictionary<Vector3Int, GameObject> cellCoordinates = new Dictionary<Vector3Int, GameObject>();
 
@@ -20,7 +20,7 @@ public class CellCoordinatesSystem : MonoBehaviour
         
     }
 
-    void AppendNewCell(Vector3Int cellLocation, GameObject cell)
+    public void AppendNewCell(Vector3Int cellLocation, GameObject cell)
     {
         cellCoordinates.Add(cellLocation, cell);
     }
