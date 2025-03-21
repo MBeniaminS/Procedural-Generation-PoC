@@ -183,6 +183,7 @@ MonoBehaviour:
   maxMapXSize: 10
   maxMapYSize: 10
   numDoorsToCreate: 1
+  startingCellPrefab: {fileID: 8426994971887400223, guid: ed64568e4d968fa41901d7d428e8ff23, type: 3}
   testPrefab: {fileID: 8426994971887400223, guid: 28f35a946a014bc42bd997a516b0f2b5, type: 3}
 --- !u!114 &4186488
 MonoBehaviour:
@@ -300,7 +301,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalScale: {x: 500, y: 500, z: 500}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}

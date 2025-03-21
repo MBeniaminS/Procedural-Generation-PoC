@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Rendering;
 
 public class GridTesting : MonoBehaviour
 {
@@ -17,7 +14,9 @@ public class GridTesting : MonoBehaviour
     [Range(1, 4)]
     public int numDoorsToCreate;
 
+    public GameObject startingCellPrefab;
     public GameObject testPrefab;
+
 
     Grid grid;
     Camera mainCam;
@@ -41,14 +40,12 @@ public class GridTesting : MonoBehaviour
         cellArray = new GameObject[maxMapXSize, maxMapYSize];
 
         Vector3Int centerCell = new Vector3Int(Mathf.FloorToInt(maxMapXSize / 2), Mathf.FloorToInt(maxMapYSize / 2));
-        print(centerCell);
 
-        CreateNewCell(centerCell);
+        CreateNewCell(centerCell, startingCellPrefab);
 
 
         fireAction = InputSystem.actions.FindAction("Fire");
 
-        GenerateDoors(testPrefab, numDoorsToCreate);
     }
 
     // Update is called once per frame
@@ -60,13 +57,13 @@ public class GridTesting : MonoBehaviour
         //}
     }
 
-    void CreateNewCell(Vector3Int location)
+    void CreateNewCell(Vector3Int location, GameObject cell)
     {
-        Vector3Int cellPos = location;
         //SpawnPrefabAtPoint.instance.SpawnPrefab(testPrefab, grid.GetCellCenterWorld(cellPos), null);
-        GameObject newCell = Instantiate(testPrefab);
-        newCell.transform.position = grid.GetCellCenterWorld(cellPos);
+        GameObject newCell = Instantiate(cell);
+        newCell.transform.position = grid.GetCellCenterWorld(location);
 
+        GenerateDoors(newCell, numDoorsToCreate);
     }
 
     private Vector3 GetMousePos()
@@ -96,6 +93,7 @@ public class GridTesting : MonoBehaviour
         RoomCell roomCellScript = cell.GetComponent<RoomCell>();
 
 
+
         for (int i = 0; i < amount; i++)
         {
             int doorDirection = GetRandomDoorDirection();
@@ -114,24 +112,28 @@ public class GridTesting : MonoBehaviour
                 case 1:
                     Debug.LogError("NORTH DOOR GENERATED");
                     roomCellScript.TurnWallIntoDoorFrame(cardinalDirections.North);
+                    GenerateBranchOut(cardinalDirections.North);
                     break;
 
                 // East Direction
                 case 2:
                     Debug.LogError("EAST DOOR GENERATED");
                     roomCellScript.TurnWallIntoDoorFrame(cardinalDirections.East);
+                    GenerateBranchOut(cardinalDirections.East);
                     break;
 
                 // South Direction
                 case 3:
                     Debug.LogError("SOUTH DOOR GENERATED");
                     roomCellScript.TurnWallIntoDoorFrame(cardinalDirections.South);
+                    GenerateBranchOut(cardinalDirections.South);
                     break;
 
                 // West Direction
                 case 4:
                     Debug.LogError("WEST DOOR GENERATED");
                     roomCellScript.TurnWallIntoDoorFrame(cardinalDirections.West);
+                    GenerateBranchOut(cardinalDirections.West);
                     break;
 
                 default:
@@ -139,9 +141,16 @@ public class GridTesting : MonoBehaviour
                     break;
             }
         }
+
+        
     }
 
-    private int GetRandomDoorDirection() 
+    void GenerateBranchOut(GridTesting.cardinalDirections direction)
+    {
+
+    }
+
+    private int GetRandomDoorDirection()
     {
         return Random.Range(1, 5);
     }
