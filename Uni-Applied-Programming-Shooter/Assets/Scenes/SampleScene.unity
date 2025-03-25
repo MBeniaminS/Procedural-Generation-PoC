@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 4186485}
   - component: {fileID: 4186487}
   - component: {fileID: 4186488}
+  - component: {fileID: 4186489}
   m_Layer: 0
   m_Name: MapGenManager
   m_TagString: Untagged
@@ -180,8 +181,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 128
-  maxMapXSize: 10
-  maxMapYSize: 10
+  useSeed: 0
   numDoorsToCreate: 1
   startingCellPrefab: {fileID: 8426994971887400223, guid: ed64568e4d968fa41901d7d428e8ff23, type: 3}
   testPrefab: {fileID: 8426994971887400223, guid: 28f35a946a014bc42bd997a516b0f2b5, type: 3}
@@ -197,6 +197,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a029f01e78833aa4fb3c1d5d11077c4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxMapXSize: 10
+  maxMapYSize: 10
+--- !u!114 &4186489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4186484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41c94aa229050824a9172760e3dcab75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useFixedSeed: 0
+  fixedSeed: 0
+  usedSeed: 0
 --- !u!1 &266218254
 GameObject:
   m_ObjectHideFlags: 0

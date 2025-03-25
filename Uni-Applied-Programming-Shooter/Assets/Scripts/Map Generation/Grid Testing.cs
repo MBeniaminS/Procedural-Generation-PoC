@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -6,9 +7,7 @@ public class GridTesting : MonoBehaviour
 {
     [SerializeField] private LayerMask groundMask;
 
-    public GameObject[,] cellArray;
-    [SerializeField] int maxMapXSize;
-    [SerializeField] int maxMapYSize;
+    [SerializeField] int useSeed;
 
 
     [Range(1, 4)]
@@ -37,9 +36,9 @@ public class GridTesting : MonoBehaviour
         grid = GetComponent<Grid>();
         mainCam = Camera.main;
 
-        cellArray = new GameObject[maxMapXSize, maxMapYSize];
+        
 
-        Vector3Int centerCell = new Vector3Int(Mathf.FloorToInt(maxMapXSize / 2), Mathf.FloorToInt(maxMapYSize / 2));
+        Vector3Int centerCell = new Vector3Int(Mathf.FloorToInt(CellCoordinates.Instance.MaxMapXSize / 2), 0, Mathf.FloorToInt(CellCoordinates.Instance.MaxMapYSize / 2));
 
         CreateNewCell(centerCell, startingCellPrefab);
 
@@ -62,6 +61,11 @@ public class GridTesting : MonoBehaviour
         //SpawnPrefabAtPoint.instance.SpawnPrefab(testPrefab, grid.GetCellCenterWorld(cellPos), null);
         GameObject newCell = Instantiate(cell);
         newCell.transform.position = grid.GetCellCenterWorld(location);
+
+        // Sets new cell in cell coordinates.
+        CellCoordinates.Instance.cellCoordinates[location.x, location.y] = newCell;
+
+        print("Cell Coordinates: ( " + location.x + " , " + location.y + " )");
 
         GenerateDoors(newCell, numDoorsToCreate);
     }
@@ -152,7 +156,7 @@ public class GridTesting : MonoBehaviour
 
     private int GetRandomDoorDirection()
     {
-        return Random.Range(1, 5);
+        return UnityEngine.Random.Range(1, 5);
     }
 
 
