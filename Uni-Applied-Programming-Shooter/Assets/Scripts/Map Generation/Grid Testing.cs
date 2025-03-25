@@ -63,9 +63,9 @@ public class GridTesting : MonoBehaviour
         newCell.transform.position = grid.GetCellCenterWorld(location);
 
         // Sets new cell in cell coordinates.
-        CellCoordinates.Instance.cellCoordinates[location.x, location.y] = newCell;
+        CellCoordinates.Instance.cellCoordinates[location.x, location.z] = newCell;
 
-        print("Cell Coordinates: ( " + location.x + " , " + location.y + " )");
+        print("Cell Coordinates: ( " + location.x + " , " + location.z  + " )");
 
         GenerateDoors(newCell, numDoorsToCreate);
     }
