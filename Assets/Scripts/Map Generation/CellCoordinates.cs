@@ -1,35 +1,32 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CellCoordinates : MonoBehaviour
 {
     public static CellCoordinates Instance;
 
-    [SerializeField] int maxMapXSize;
-    [SerializeField] int maxMapYSize;
+    [SerializeField] int maxMapXSize = 10;
+    [SerializeField] int maxMapZSize = 10;
 
     public int MaxMapXSize { get { return maxMapXSize; } }
-    public int MaxMapYSize { get { return maxMapYSize; } }
-
+    public int MaxMapZSize { get { return maxMapZSize; } }
 
     public GameObject[,] cellCoordinates;
 
     private void Awake()
     {
         Instance = this;
-        cellCoordinates = new GameObject[maxMapXSize, maxMapYSize];
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        GetCellInLocation(new Vector3Int(5, 0, 5));
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        // Error checking and reverting to default number
+        if (maxMapXSize <= 0)
+        {
+            Debug.LogError("Max Map X Size has been set to 0 or below. Setting to default of 10.");
+            maxMapXSize = 10;
+        }
+        if (maxMapZSize <= 0)
+        {
+            Debug.LogError("Max Map Z Size has been set to 0 or below. Setting to default of 10.");
+            maxMapZSize = 10;
+        }
+        cellCoordinates = new GameObject[maxMapXSize, maxMapZSize];
     }
 
     /// <summary>
@@ -38,7 +35,7 @@ public class CellCoordinates : MonoBehaviour
     /// <param name="location">Coordinates/Location of the cell to be found</param>
     /// <param name="roomCell">The RoomCell component returned if cell is in location</param>
     /// <returns></returns>
-    bool GetCellInLocation(Vector3Int location, out RoomCell roomCell)
+    public bool GetCellInLocation(Vector3Int location, out RoomCell roomCell)
     {
         int indexX = location.x;
         int indexY = location.y;
@@ -61,7 +58,7 @@ public class CellCoordinates : MonoBehaviour
     /// </summary>
     /// <param name="location">Coordinates/Location of the cell to be found</param>
     /// <returns></returns>
-    bool GetCellInLocation(Vector3Int location)
+    public bool GetCellInLocation(Vector3Int location)
     {
         int indexX = location.x;
         int indexY = location.z;
@@ -76,4 +73,5 @@ public class CellCoordinates : MonoBehaviour
             return false;
         }
     }
+
 }

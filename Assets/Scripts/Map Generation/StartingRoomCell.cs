@@ -1,18 +1,13 @@
 using UnityEngine;
 
-public class StartingRoomCell : MonoBehaviour
+public class StartingRoomCell : RoomCell
 {
     [SerializeField] Transform playerSpawnTransform;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // Finds the player and places them in the starting cell
     void Start()
     {
         GameObject.FindWithTag("Player").transform.position = playerSpawnTransform.position;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

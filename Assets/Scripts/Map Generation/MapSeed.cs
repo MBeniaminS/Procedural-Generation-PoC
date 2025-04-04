@@ -20,7 +20,8 @@ public class MapSeed : MonoBehaviour
         {
             usedSeed = UnityEngine.Random.Range(0, int.MaxValue);
         }
-
+        // Sets the random seed.
         UnityEngine.Random.InitState(usedSeed);
+
     }
 }

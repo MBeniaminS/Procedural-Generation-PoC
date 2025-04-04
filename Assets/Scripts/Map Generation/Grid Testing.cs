@@ -7,10 +7,7 @@ public class GridTesting : MonoBehaviour
 {
     [SerializeField] private LayerMask groundMask;
 
-
-    [SerializeField] CardinalDirections[] cardinalDirections;
-
-    CardinalDirections directionEnum;
+    CardinalDirectionsBak directionEnum;
 
     [Range(1, 4)]
     public int numDoorsToCreate;
@@ -22,11 +19,8 @@ public class GridTesting : MonoBehaviour
 
 
     Grid grid;
-    Camera mainCam;
 
-    InputAction fireAction;
-
-    public enum CardinalDirections
+    public enum CardinalDirectionsBak
     {
         North,
         East,
@@ -38,30 +32,18 @@ public class GridTesting : MonoBehaviour
     void Start()
     {
         grid = GetComponent<Grid>();
-        mainCam = Camera.main;
 
-        
 
-        Vector3Int centerCell = new Vector3Int(Mathf.FloorToInt(CellCoordinates.Instance.MaxMapXSize / 2), 0, Mathf.FloorToInt(CellCoordinates.Instance.MaxMapYSize / 2));
+
+        Vector3Int centerCell = new Vector3Int(Mathf.FloorToInt(CellCoordinates.Instance.MaxMapXSize / 2), 0, Mathf.FloorToInt(CellCoordinates.Instance.MaxMapZSize / 2));
 
         CreateNewCell(centerCell, startingCellPrefab);
 
 
-        fireAction = InputSystem.actions.FindAction("Fire");
 
-
-        GenerateBranchOut(currentCell, directionEnum);
+        //GenerateBranchOut(currentCell, directionEnum);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //if (fireAction.WasPerformedThisFrame())
-        //{
-        //    CreateNewCell(grid.WorldToCell(GetMousePos()), testPrefab);
-        //    print(testPrefab.GetComponent<RoomCell>().coordinate);
-        //}
-    }
 
     void CreateNewCell(Vector3Int location, GameObject cell)
     {
@@ -72,29 +54,14 @@ public class GridTesting : MonoBehaviour
         // Sets new cell in cell coordinates.
         CellCoordinates.Instance.cellCoordinates[location.x, location.z] = newCell;
 
-        print("Cell Coordinates: ( " + location.x + " , " + location.z  + " )");
+        print("Cell Coordinates: ( " + location.x + " , " + location.z + " )");
 
         GenerateDoors(newCell, numDoorsToCreate);
 
         currentCell = newCell;
 
         RoomCell roomCellScript = cell.GetComponent<RoomCell>();
-        roomCellScript.coordinate = location;
-    }
-
-    private Vector3 GetMousePos()
-    {
-        Ray cameraRay = mainCam.ScreenPointToRay(Mouse.current.position.ReadValue());
-
-        if (Physics.Raycast(cameraRay, out var hitInfo, Mathf.Infinity, groundMask))
-        {
-            //print("Ray Hit: " + hitInfo.point);
-            return hitInfo.point;
-        }
-        else
-        {
-            return Vector3.zero;
-        }
+        roomCellScript.cellPosition = location;
     }
 
     private void GenerateDoors(GameObject cell, int amount)
@@ -109,13 +76,11 @@ public class GridTesting : MonoBehaviour
 
         RoomCell roomCellScript = cell.GetComponent<RoomCell>();
 
-
-
         for (int i = 0; i < amount; i++)
         {
             int doorDirectionInt = GetRandomDoorDirection();
 
-            CardinalDirections doorDirectionEnum = CardinalDirections.North;
+            CardinalDirectionsBak doorDirectionEnum = CardinalDirectionsBak.North;
 
             while (generatedDoorDirections.Contains(doorDirectionInt))
             {
@@ -131,29 +96,29 @@ public class GridTesting : MonoBehaviour
                 // North Direction
                 case 1:
                     Debug.LogError("NORTH DOOR GENERATED");
-                    doorDirectionEnum = CardinalDirections.North;
-                    directionEnum = CardinalDirections.North;
+                    doorDirectionEnum = CardinalDirectionsBak.North;
+                    directionEnum = CardinalDirectionsBak.North;
                     break;
 
                 // East Direction
                 case 2:
                     Debug.LogError("EAST DOOR GENERATED");
-                    doorDirectionEnum = CardinalDirections.East;
-                    directionEnum = CardinalDirections.East;
+                    doorDirectionEnum = CardinalDirectionsBak.East;
+                    directionEnum = CardinalDirectionsBak.East;
                     break;
 
                 // South Direction
                 case 3:
                     Debug.LogError("SOUTH DOOR GENERATED");
-                    doorDirectionEnum = CardinalDirections.South;
-                    directionEnum = CardinalDirections.South;
+                    doorDirectionEnum = CardinalDirectionsBak.South;
+                    directionEnum = CardinalDirectionsBak.South;
                     break;
 
                 // West Direction
                 case 4:
                     Debug.LogError("WEST DOOR GENERATED");
-                    doorDirectionEnum = CardinalDirections.West;
-                    directionEnum = CardinalDirections.West;
+                    doorDirectionEnum = CardinalDirectionsBak.West;
+                    directionEnum = CardinalDirectionsBak.West;
                     break;
 
                 default:
@@ -162,31 +127,31 @@ public class GridTesting : MonoBehaviour
 
             }
 
-            roomCellScript.TurnWallIntoDoorFrame(doorDirectionEnum);
+            //roomCellScript.TurnWallIntoDoorFrame(doorDirectionEnum);
         }
 
-        
+
     }
 
-    void GenerateBranchOut(GameObject cell, GridTesting.CardinalDirections direction)
+    void GenerateBranchOut(GameObject cell, GridTesting.CardinalDirectionsBak direction)
     {
         Vector3Int newCellLocation;
-        newCellLocation = cell.GetComponent<RoomCell>().coordinate;
+        newCellLocation = cell.GetComponent<RoomCell>().cellPosition;
         switch (direction)
         {
-            case CardinalDirections.North:
+            case CardinalDirectionsBak.North:
                 newCellLocation.z += 1;
                 break;
 
-            case CardinalDirections.East:
+            case CardinalDirectionsBak.East:
                 newCellLocation.x += 1;
                 break;
 
-            case CardinalDirections.South:
+            case CardinalDirectionsBak.South:
                 newCellLocation.z -= 1;
                 break;
 
-            case CardinalDirections.West:
+            case CardinalDirectionsBak.West:
                 newCellLocation.x -= 1;
                 break;
 
@@ -201,8 +166,8 @@ public class GridTesting : MonoBehaviour
     private int GetRandomDoorDirection()
     {
         return UnityEngine.Random.Range(1, 5);
+        
     }
-
 
 
 }

@@ -129,6 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4186486}
   - component: {fileID: 4186485}
+  - component: {fileID: 4186490}
   - component: {fileID: 4186487}
   - component: {fileID: 4186488}
   - component: {fileID: 4186489}
@@ -173,7 +174,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4186484}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31fccea4851778340b57afc5fa564ae6, type: 3}
   m_Name: 
@@ -181,11 +182,10 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 128
-  useSeed: 0
-  cardinalDirections: 
   numDoorsToCreate: 1
   startingCellPrefab: {fileID: 8426994971887400223, guid: ed64568e4d968fa41901d7d428e8ff23, type: 3}
   testPrefab: {fileID: 8426994971887400223, guid: 28f35a946a014bc42bd997a516b0f2b5, type: 3}
+  currentCell: {fileID: 0}
 --- !u!114 &4186488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,7 +199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxMapXSize: 10
-  maxMapYSize: 10
+  maxMapZSize: 10
 --- !u!114 &4186489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,6 +215,22 @@ MonoBehaviour:
   useFixedSeed: 0
   fixedSeed: 0
   usedSeed: 0
+--- !u!114 &4186490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4186484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1e5b69a16c8eff4da63651d60766e45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingCellPrefab: {fileID: 8426994971887400223, guid: ed64568e4d968fa41901d7d428e8ff23, type: 3}
+  baseCellPrefab: {fileID: 8426994971887400223, guid: 28f35a946a014bc42bd997a516b0f2b5, type: 3}
+  currentCell: {fileID: 0}
+  currentDoorDirections: 
 --- !u!1 &266218254
 GameObject:
   m_ObjectHideFlags: 0

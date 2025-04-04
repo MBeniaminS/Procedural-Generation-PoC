@@ -1,21 +1,14 @@
 using UnityEngine;
 
+/// <summary>
+/// Class placed on the WallDoorParent of each room cell to provide an easy way to
+/// find each wall in a cell, with which side of the room the wall is on.
+/// </summary>
 public class WallDoorParent : MonoBehaviour
 {
-
-    public GridTesting.CardinalDirections wallDirection;
+    // Class placed on 
+    public MapGenerationManager.CardinalDirections wallDirection;
     public GameObject wall;
     public GameObject doorFrame;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
+
