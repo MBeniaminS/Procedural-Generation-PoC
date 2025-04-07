@@ -38,11 +38,11 @@ public class CellCoordinates : MonoBehaviour
     public bool GetCellInLocation(Vector3Int location, out RoomCell roomCell)
     {
         int indexX = location.x;
-        int indexY = location.y;
-        if (cellCoordinates[indexX, indexY].TryGetComponent<RoomCell>(out RoomCell cellComp))
+        int indexZ = location.z;
+        if (cellCoordinates[indexX, indexZ] != null)
         {
             Debug.Log("Cell Location: " + location + " has a cell");
-            roomCell = cellComp;
+            roomCell = cellCoordinates[indexX, indexZ].GetComponent<RoomCell>();
             return true;
         }
         else
@@ -61,15 +61,15 @@ public class CellCoordinates : MonoBehaviour
     public bool GetCellInLocation(Vector3Int location)
     {
         int indexX = location.x;
-        int indexY = location.z;
-        if (cellCoordinates[indexX, indexY].TryGetComponent<RoomCell>(out RoomCell cellComp))
+        int indexZ = location.z;
+        if (cellCoordinates[indexX, indexZ] != null)
         {
             Debug.Log("Cell Location: " + location + " has a cell");
             return true;
         }
         else
         {
-            Debug.LogWarning("Cell Location: " + location + " does not exist in system");
+            //Debug.LogWarning("Cell Location: " + location + " does not exist in system");
             return false;
         }
     }
