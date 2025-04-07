@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerHealth : CharacterHealth
 {
+    [SerializeField] float delayForSceneRestart;
 
     #region Unity Callbacks
     // UNCOMMENT BELOW IF METHODS ARE TO BE EXTENDED/CHANGED
@@ -27,10 +28,11 @@ public class PlayerHealth : CharacterHealth
     //    base.Damage(damage);
     //}
 
-    //protected override void DestroySelf()
-    //{
-    //    base.DestroySelf();
-    //}
+    public override void DestroySelf()
+    {
+        MapGenerationManager.Instance.startDelayedSceneRestart(delayForSceneRestart);
+        base.DestroySelf();
+    }
 
     #endregion Interface Methods
 

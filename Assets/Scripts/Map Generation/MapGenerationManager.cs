@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Rand = UnityEngine.Random;
 
 public class MapGenerationManager : MonoBehaviour
@@ -24,6 +25,7 @@ public class MapGenerationManager : MonoBehaviour
     [SerializeField] int minimumAmountOfCells = 7;
     [SerializeField] int maximumAmountOfCells = 15;
     [SerializeField] float delayBetweenGenerationCommands = 0.5f;
+    public IEnumerator delayedSceneRestart;
 
     [Header("Updating References")]
     [SerializeField] GameObject currentCell;
@@ -34,6 +36,8 @@ public class MapGenerationManager : MonoBehaviour
 
     [Header("Statistics")]
     [SerializeField] int amountOfCellsCreated;
+
+
 
     #endregion
 
@@ -58,6 +62,21 @@ public class MapGenerationManager : MonoBehaviour
         StartCoroutine(proceduralGenCoroutine);
 
     }
+    #endregion
+
+    #region Public Methods
+    public void startDelayedSceneRestart(float delay)
+    {
+        delayedSceneRestart = DelayedSceneRestart(delay);
+        StartCoroutine(delayedSceneRestart);
+    }
+
+    public IEnumerator DelayedSceneRestart(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     #endregion
 
     #region Private Methods
@@ -221,7 +240,7 @@ public class MapGenerationManager : MonoBehaviour
     /// <param name="amountOfDoors">How many doors should the cell form</param>
     /// <param name="doorDirections">The array of directions that the cell is branching out to</param>
     /// <param name="isBranching">Checks if the cell created is as a result of branching out from one cell. If yes, it does not set the cell as the "startBranchCell"</param>
-    /// <param name="originatingDirection">If branching out, give the originating direction for the new cell to blacklist, to avoid doorframes being created there.</param>
+    /// <param name="blacklistDirection">If branching out, give the originating direction for the new cell to blacklist, to avoid doorframes being created there.</param>
     void CreateNewCell(Vector3Int location, GameObject cell, int amountOfDoors, out CardinalDirections[] doorDirections, bool isBranching, CardinalDirections blacklistDirection)
     {
         GameObject newCell = Instantiate(cell);
@@ -316,6 +335,13 @@ public class MapGenerationManager : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+        foreach (Transform child in GameObject.FindWithTag("EnemyList").GetComponentsInChildren<Transform>())
+        {
+            Destroy(child.gameObject);
+        }
+        GameObject enemyList = new GameObject("EnemyList");
+        enemyList.tag = "EnemyList";
+
         amountOfCellsCreated = 0;
         allowGenerateDoors = true;
         isGeneratingLayout = true;

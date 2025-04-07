@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2552272739440192928
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 122197270983046743}
+  m_Layer: 12
+  m_Name: DoorEntry1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &122197270983046743
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2552272739440192928}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.1999999, y: -0.333334, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6182671057771049684}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4112032544134821536
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7686760745829386976}
+  m_Layer: 12
+  m_Name: DoorEntry2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7686760745829386976
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4112032544134821536}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.2, y: -0.333334, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6182671057771049684}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6894169729829449448
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,7 +195,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8794728960949318291}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.70710707, z: -0, w: 0.70710653}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 4, z: 25}
   m_LocalScale: {x: 1.5, y: 8, z: 51.5}
   m_ConstrainProportionsScale: 0
@@ -215,12 +277,45 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7406239813376805288, guid: d75dd0998cc9de7419f92583c44354ac, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 122197270983046743}
+    - targetCorrespondingSourceObject: {fileID: 7406239813376805288, guid: d75dd0998cc9de7419f92583c44354ac, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7686760745829386976}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1033462507737306693, guid: d75dd0998cc9de7419f92583c44354ac, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3637621345102547540}
   m_SourcePrefab: {fileID: 100100000, guid: d75dd0998cc9de7419f92583c44354ac, type: 3}
 --- !u!4 &63925203211752047 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3739789709099378963, guid: d75dd0998cc9de7419f92583c44354ac, type: 3}
+  m_PrefabInstance: {fileID: 3676482449814469500}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4418846951592422713 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1033462507737306693, guid: d75dd0998cc9de7419f92583c44354ac, type: 3}
+  m_PrefabInstance: {fileID: 3676482449814469500}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3637621345102547540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4418846951592422713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceaf7fa1005dcbf4bba7f02d2d10ad48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorEntry1: {fileID: 122197270983046743}
+  doorEntry2: {fileID: 7686760745829386976}
+--- !u!4 &6182671057771049684 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7406239813376805288, guid: d75dd0998cc9de7419f92583c44354ac, type: 3}
   m_PrefabInstance: {fileID: 3676482449814469500}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &7428649953934480843 stripped

@@ -4,12 +4,8 @@ public class CanSeePlayer : MonoBehaviour
 {
     public float visionRadius;
     public float visionDistance;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public LayerMask layerMask;
+    public bool canSeePlayer;
 
     // Update is called once per frame
     void Update()
@@ -17,9 +13,12 @@ public class CanSeePlayer : MonoBehaviour
         Ray visionRay = new Ray(transform.position, transform.forward);
         RaycastHit hit;
         Debug.DrawLine(transform.position, transform.position + (transform.forward * visionDistance), Color.yellow);
-        if (Physics.Raycast(visionRay, out hit, visionDistance))
+        if (Physics.Raycast(visionRay, out hit, 100f, layerMask))
         {
-            print("Raycast Hit: " + hit.collider.name);
+            if (hit.collider.tag == "Player")
+            {
+                canSeePlayer = true;
+            }
         }
     }
 }

@@ -7,6 +7,7 @@ TagManager:
   - ProjectileList
   - Door
   - North
+  - EnemyList
   layers:
   - Default
   - TransparentFX
