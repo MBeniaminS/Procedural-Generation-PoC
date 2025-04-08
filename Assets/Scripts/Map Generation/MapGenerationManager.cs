@@ -65,7 +65,7 @@ public class MapGenerationManager : MonoBehaviour
     #endregion
 
     #region Public Methods
-    public void startDelayedSceneRestart(float delay)
+    public void StartDelayedSceneRestart(float delay)
     {
         delayedSceneRestart = DelayedSceneRestart(delay);
         StartCoroutine(delayedSceneRestart);
@@ -204,7 +204,6 @@ public class MapGenerationManager : MonoBehaviour
 
         // Sets new instantiated cell in cell coordinates
         CellCoordinates.Instance.cellCoordinates[location.x, location.z] = newCell;
-        currentCell = newCell;
         if (!isBranching)
         {
             startBranchCell = newCell;
@@ -253,7 +252,6 @@ public class MapGenerationManager : MonoBehaviour
 
         // Sets new instantiated cell in cell coordinates
         CellCoordinates.Instance.cellCoordinates[location.x, location.z] = newCell;
-        currentCell = newCell;
         if (!isBranching)
         {
             startBranchCell = newCell;

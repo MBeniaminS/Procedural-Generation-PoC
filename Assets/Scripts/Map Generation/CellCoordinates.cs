@@ -32,7 +32,7 @@ public class CellCoordinates : MonoBehaviour
     /// <summary>
     /// Attempts to find the roomCell component in the coordinates specified. Returns as true of false. Also returns the RoomCell component (if cell is found) as variable.
     /// </summary>
-    /// <param name="location">Coordinates/Location of the cell to be found</param>
+    /// <para       m name="location">Coordinates/Location of the cell to be found</param>
     /// <param name="roomCell">The RoomCell component returned if cell is in location</param>
     /// <returns></returns>
     public bool GetCellInLocation(Vector3Int location, out RoomCell roomCell)

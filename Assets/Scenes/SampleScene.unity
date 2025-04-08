@@ -217,7 +217,7 @@ MonoBehaviour:
   finalRoomCellPrefab: {fileID: 6326690381457033996, guid: 07db9dc79d098e641943a088f99e7a12, type: 3}
   minimumAmountOfCells: 8
   maximumAmountOfCells: 20
-  delayBetweenGenerationCommands: 0.2
+  delayBetweenGenerationCommands: 0.1
   currentCell: {fileID: 0}
   startBranchCell: {fileID: 0}
   currentDoorDirections: 

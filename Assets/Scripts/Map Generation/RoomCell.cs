@@ -12,7 +12,7 @@ public class RoomCell : MonoBehaviour
     public int amountOfDoorsCreated = 0;
     public List<CardinalDirection> doorDirectionsBlacklist = new List<CardinalDirection>();
     public CardinalDirection[] generatedDoorDirections;
-
+        
 
     public bool isBranchDone = false;
 
@@ -42,7 +42,7 @@ public class RoomCell : MonoBehaviour
             amount = Mathf.Clamp(amount, 0, 4);
         }
 
-        _isNorthCreated = false;
+        isNorthCreated = false;
         generatedDoorDirections = new CardinalDirection[amount];
 
         if (MapGenerationManager.Instance.allowGenerateDoors)
@@ -64,9 +64,9 @@ public class RoomCell : MonoBehaviour
                     {
                         return generatedDoorDirections;
                     }
-                    if (doorDirection == CardinalDirection.North && !_isNorthCreated && !doorDirectionsBlacklist.Contains(CardinalDirection.North))
+                    if (doorDirection == CardinalDirection.North && !isNorthCreated && !doorDirectionsBlacklist.Contains(CardinalDirection.North))
                     {
-                        _isNorthCreated = true;
+                        isNorthCreated = true;
                         break;
                     }
                     #region Console Logging
@@ -242,7 +242,7 @@ public class RoomCell : MonoBehaviour
 
     WallDoorParent[] wallDoorParentsArray;
 
-    bool _isNorthCreated;
+    bool isNorthCreated;
 
     #endregion
 }

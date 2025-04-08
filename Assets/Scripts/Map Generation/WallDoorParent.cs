@@ -6,7 +6,6 @@ using UnityEngine;
 /// </summary>
 public class WallDoorParent : MonoBehaviour
 {
-    // Class placed on 
     public MapGenerationManager.CardinalDirections wallDirection;
     public GameObject wall;
     public GameObject doorFrame;

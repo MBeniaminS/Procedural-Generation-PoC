@@ -30,7 +30,7 @@ public class PlayerHealth : CharacterHealth
 
     public override void DestroySelf()
     {
-        MapGenerationManager.Instance.startDelayedSceneRestart(delayForSceneRestart);
+        MapGenerationManager.Instance.StartDelayedSceneRestart(delayForSceneRestart);
         base.DestroySelf();
     }
 
